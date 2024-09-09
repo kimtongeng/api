@@ -1,0 +1,1 @@
+[17-Sep-2022 11:05:27 asia/phnom_penh] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 3014656 bytes) in /home/idg/public_html/ecommerce/super-app/api/app/Helpers/PMSApi.php on line 41
