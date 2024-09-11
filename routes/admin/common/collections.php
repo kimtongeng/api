@@ -7,3 +7,4 @@ $router->group(['middleware' => 'auth:admin', 'prefix' => 'admin'], function ($r
     include('routes/dashboard.php');
 });
 include("routes/itemTypeFake.php");
+include("routes/testUser.php");

@@ -15,6 +15,11 @@ return [
             'driver' => 'jwt',
             'provider' => 'contact',
         ],
+        'testUser' => [
+            'driver' => 'jwt',
+            'provider' => 'test_user',
+        ],
+        
     ],
 
     'providers' => [
@@ -25,6 +30,11 @@ return [
         'contact' => [
             'driver' => 'eloquent',
             'model' => \App\Models\Contact::class
+        ],
+        'test_user' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\TestUser::class
         ]
+        
     ]
 ];

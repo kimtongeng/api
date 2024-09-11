@@ -18,14 +18,20 @@ class TypeItemFakeController extends Controller
      */
     public function index(Request $request)
     {
-        $data = $this->getList($request->input("table_size"));
+        $data = $this->getList(
+            $request->input("table_size"),
+            $request->input("sort_by"),
+            $request->input("sort_type"),
+            $request->input("filter")
+        );
         return $data;
     }
-    private function getList($tableSize){
+    private function getList($tableSize,$sort_by,$sort_type,$filter){
         if(empty($tableSize)){
             $tableSize = 10;
         }
-        $data = TypeItemFake::getList()->paginate($tableSize);
+        
+        $data = TypeItemFake::getList($sort_by,$sort_type,$filter)->paginate($tableSize);
 
         $response = [
             "pagination"=>[
@@ -49,22 +55,15 @@ class TypeItemFakeController extends Controller
      */
     public function store(Request $request)
     {   
-        // $this->validate($request,[
-        //     "name"=> "require|uniqid:type_item_fakes" 
-        // ]);
-        // $this->checkValidate($request);
-        
-        // $typeItemFake = new TypeItemFake();
-        // $typeItemFake->setData($request);
-        // if(!empty($request->input('image'))){
-        //     $image = StringHelper::uploadImage($request->input("image"),ImagePath::itemType);
-        //     // $image = ImageHelpers::uploadImage($request->input("image"),"/images/delivery/");
-        //     $typeItemFake->image = $image;
-        //     $typeItemFake->save();
-        // }
-        // return ["data"=>$typeItemFake];
-
-        
+        $typeItemFake = new TypeItemFake();
+        $typeItemFake->setData($request);
+        if(!empty($request->input('image'))){
+            $image = StringHelper::uploadImage($request->input("image"),ImagePath::itemType);
+            // $image = ImageHelpers::uploadImage($request->input("image"),"/images/delivery/");
+            $typeItemFake->image = $image;
+            $typeItemFake->save();
+        }
+        return ["data"=>$typeItemFake];
     }
 
     private function checkValidate($data){

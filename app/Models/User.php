@@ -34,10 +34,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     const NOTIFICATION_KEY_NAME = 'notification_key_name';
     const AUTH_TOKEN = 'auth_token';
     const STATUS = 'status';
-    const CREATED_AT = 'created_at';
+    
+const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
-
     protected $table = self::TABLE_NAME;
 
 

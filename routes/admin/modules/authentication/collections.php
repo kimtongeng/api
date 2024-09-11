@@ -13,5 +13,4 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
 $router->group(['middleware' => 'auth:admin', 'prefix' => 'admin'], function ($router) {
     Route::post('logout', 'Admin\Modules\Authentication\AuthController@logout');
     Route::post('getUser', 'Admin\Modules\Authentication\AuthController@getUser');
-
 });
