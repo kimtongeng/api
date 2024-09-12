@@ -65,12 +65,25 @@ class TestUserController extends Controller
         $credential = $request->only(["username","password"]);
         if(!$token = Auth::guard("testUser")->attempt($credential,["exp"=>Carbon::now()->addDay(1)->timestamp])){
             return response()->json(['message' => 'Unauthorized'], 401);
-            
         }
+        
         return [
             "token"=>$token,
             "user"=>Auth::guard("testUser")->user()
         ];
 
+    }
+    public function getUser(){
+        return [
+            "user"=> Auth::guard("testUser")->user()
+        ];
+    }
+    public function logout(){
+        $user = new TestUser();
+        $user->can("update",Auth::guard("testUser")->user());
+        // Auth::guard('testUser')->logout();
+        return [
+            "message"=>"user has been logout"
+        ];
     }
 }

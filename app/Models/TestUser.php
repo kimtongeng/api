@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
@@ -45,8 +46,7 @@ class TestUser extends Model implements AuthenticatableContract, AuthorizableCon
     
     public function can($abilities, $arguments = [])
 {
-    // Implement your logic to check if the user has the given permission(s)
-    // You can use the $abilities and $arguments parameters to determine the permission(s)
+    dd($abilities,$arguments);
     return true; // or false based on your logic
 }
 public function cannot($abilities, $arguments = [])
